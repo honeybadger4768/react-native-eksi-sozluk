@@ -5,7 +5,7 @@ import {GundemStackParams} from "../navigation/stack/GundemStack";
 import Pagination from "../components/Pagination";
 import {FlashList} from "@shopify/flash-list";
 import {useThreadByPage} from "../hooks/useThreadByPage";
-import {AThread} from "../components/ThreadPage";
+import {AThread, Header} from "../components/ThreadPage";
 
 const ThreadPage = () =>{
 
@@ -18,7 +18,9 @@ const ThreadPage = () =>{
         increasePage,
         threads,
         page,
-        totalPages
+        totalPages,
+        isLoading,
+        title
     } = useThreadByPage(slug)
 
     useFocusEffect(
@@ -35,6 +37,7 @@ const ThreadPage = () =>{
 
     return (
         <View style={styles.container}>
+            <Header title={title} />
             <View style={{flex: 1, marginBottom: 50}}>
                 <FlashList
                     data={threads}
@@ -50,6 +53,7 @@ const ThreadPage = () =>{
                 page={page}
                 totalPages={totalPages}
                 theme={theme}
+                isLoading={isLoading}
                 />
         </View>
     )

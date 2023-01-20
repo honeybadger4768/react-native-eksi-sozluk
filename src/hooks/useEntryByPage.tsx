@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {TGundem} from "../pages/GundemPage";
 import {ENTRY_BY_PAGE_COUNT, THREAD_BY_PAGE_COUNT} from "../Constants";
+import {wait} from "../functions/functions";
 
 
 type EntryByPage = {
@@ -8,7 +9,6 @@ type EntryByPage = {
     page: number
 }
 
-const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 export const useEntryByPage = () => {
     const [filteredEntries, setFilteredEntries] = useState<TGundem[]>([])

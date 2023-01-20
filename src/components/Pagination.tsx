@@ -12,7 +12,8 @@ type TPagination = {
     inactiveColor: string,
     page: number,
     totalPages: number,
-    theme: Theme
+    theme: Theme,
+    isLoading?: boolean
 }
 
 
@@ -30,15 +31,16 @@ const Pagination : React.FC<TPagination> = (props) =>{
         color: props.theme.colors.text
     }
 
+
     return (
         <View style={paginationStyle}>
             <Touchable
                 onPress={props.onLeft}
                 style={paginationStyles.paginationItem}
-                disabled={props.page - 1 <= 0}
+                disabled={props.page - 1 <= 0 || props.isLoading}
             >
                 {/*inactive : active */}
-                <ArrowLeft fill={props.page - 1 <= 0 ? props.inactiveColor : props.activeColor }/>
+                <ArrowLeft fill={(props.page - 1 <= 0) || props.isLoading ? props.inactiveColor : props.activeColor }/>
             </Touchable>
             <View style={paginationStyles.paginationItem}>
                 <Text style={pageTextStyle}>{props.page}/{props.totalPages}</Text>
@@ -46,10 +48,10 @@ const Pagination : React.FC<TPagination> = (props) =>{
             <Touchable
                 onPress={props.onRight}
                 style={paginationStyles.paginationItem}
-                disabled={props.page >= props.totalPages}
+                disabled={props.page >= props.totalPages || props.isLoading}
             >
                 {/*inactive : active */}
-                <ArrowRight fill={props.page >= props.totalPages ? props.inactiveColor : props.activeColor }/>
+                <ArrowRight fill={(props.page >= props.totalPages) || props.isLoading ? props.inactiveColor : props.activeColor }/>
             </Touchable>
         </View>
     )

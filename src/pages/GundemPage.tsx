@@ -87,18 +87,9 @@ const GundemPage = () => {
 
     return (
         <View style={styles.container}>
-            {isLoading ? (
-                <ActivityIndicator/>
-            ) : (
                 <View style={{flex: 1}}>
                     <View style={{flex: 1, marginBottom: 50}}>
                         <FlashList
-                            onLoad={() => {
-                                console.log("load oldu")
-                            }}
-                            ListEmptyComponent={() => (
-                                <ActivityIndicator/>
-                            )}
                             renderItem={({item, index}) => (
                                 <>
                                     <Touchable onPress={() => {
@@ -132,9 +123,9 @@ const GundemPage = () => {
                         page={page}
                         totalPages={totalPages}
                         theme={theme}
+                        isLoading={isLoading}
                     />
                 </View>
-            )}
         </View>
     )
 }
