@@ -63,17 +63,6 @@ const GundemPage = () => {
         fetchEntries()
     }, [])
 
-    useEffect(() => {
-
-        console.log("total", totalPages)
-        console.log("filtrelendi", page)
-    }, [filteredEntries])
-
-
-    useEffect(() => {
-        console.log("loading oluyo işte")
-    }, [isLoading])
-
 
     const onLeft = () => {
         decreasePage()

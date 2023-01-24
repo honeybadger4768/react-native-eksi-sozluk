@@ -37,7 +37,7 @@ const ThreadPage = () =>{
 
     return (
         <View style={styles.container}>
-            <Header title={title} />
+            <Header title={title} theme={theme} />
             <View style={{flex: 1, marginBottom: 50}}>
                 <FlashList
                     data={threads}

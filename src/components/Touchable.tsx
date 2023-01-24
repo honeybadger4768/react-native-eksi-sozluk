@@ -3,7 +3,7 @@ import {GestureResponderEvent, TouchableOpacity, TouchableOpacityProps} from "re
 
 export type TouchableType = {
     children: JSX.Element,
-    onPress: ((event: GestureResponderEvent) => void )
+    onPress?: ((event: GestureResponderEvent) => void )
 } & TouchableOpacityProps
 
 const Touchable : React.FC<TouchableType> = ({children, onPress, ...props}) =>{

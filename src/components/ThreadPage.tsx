@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native";
 import { TThread } from "../hooks/useThreadByPage";
 import { Theme } from "@react-navigation/native";
+import HighLight from "./HighLight";
 
 type ThreadProps = {
   item: TThread,
@@ -24,7 +25,7 @@ export const AThread: React.FC<ThreadProps> = ({ item, theme }) => {
   return (
     <View style={styles.thread}>
       <View>
-        <Text style={textStyle}>{item.body}</Text>
+        <HighLight style={textStyle}>{item.body}</HighLight>
       </View>
     </View>
   );
@@ -32,20 +33,27 @@ export const AThread: React.FC<ThreadProps> = ({ item, theme }) => {
 
 
 export type HeaderProps = {
-  title: string
+  title: string,
+  theme: Theme
 }
 
 export const Header: React.FC<HeaderProps> = (props) => {
 
   const HeaderStyle: ViewStyle = {
     ...styles.Header,
-    backgroundColor: ""
+    backgroundColor: props.theme.colors.background,
   };
+
+  const HeaderTitleStyle : TextStyle = {
+    ...styles.HeaderTitle,
+    color: props.theme.colors.text
+  }
+
 
 
   return (
     <View style={styles.Header}>
-      <Text>{props.title}</Text>
+      <Text style={HeaderTitleStyle}>{props.title}</Text>
     </View>
   );
 };
@@ -66,5 +74,8 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: "center",
     alignItems: "center"
+  },
+  HeaderTitle: {
+    fontSize: 20
   }
 });
